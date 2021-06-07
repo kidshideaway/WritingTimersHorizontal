@@ -236,3 +236,31 @@ func _input(event):
 func play_alarm_bell(): 
 	Player.stream = AlarmBell
 	Player.play()			
+
+
+func _on_Minutes_5_Button_pressed():
+	pass # Replace with function body.
+
+
+func _on_Minutes_10_Button_pressed():
+	pass # Replace with function body.
+
+
+func _on_Minutes_15_Button_pressed():
+	pass # Replace with function body.
+
+
+func _on_Minutes_20_Button_pressed():
+	pass # Replace with function body.
+
+
+func _on_Minutes_30_Button_pressed():
+	pass # Replace with function body.
+
+
+func _on_Minutes_45_Button_pressed():
+	pass # Replace with function body.
+
+
+func _on_Minutes_60_Button_pressed():
+	pass # Replace with function body.

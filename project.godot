@@ -19,6 +19,12 @@ config/name="Writing Timers Horizontal"
 run/main_scene="res://Resources/Scenes/Node2D.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Buttons="*res://Resources/Scripts/Buttons.gd"
+GameMenu="*res://Resources/Scripts/GameMenu.gd"
+TimerApp="*res://Resources/Scripts/TimerApp.gd"
+
 [display]
 
 window/size/fullscreen=true
