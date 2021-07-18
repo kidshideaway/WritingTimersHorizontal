@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Writing Timers Horizontal"
-run/main_scene="res://Resources/Scenes/Node2D.tscn"
+run/main_scene="res://Resources/Scenes/TimerApp.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -24,6 +24,7 @@ config/icon="res://icon.png"
 Buttons="*res://Resources/Scripts/Buttons.gd"
 GameMenu="*res://Resources/Scripts/GameMenu.gd"
 TimerApp="*res://Resources/Scripts/TimerApp.gd"
+Global="*res://Resources/Scripts/Global.gd"
 
 [display]
 
