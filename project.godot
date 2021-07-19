@@ -21,15 +21,15 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Buttons="*res://Resources/Scripts/Buttons.gd"
-GameMenu="*res://Resources/Scripts/GameMenu.gd"
-TimerApp="*res://Resources/Scripts/TimerApp.gd"
 Global="*res://Resources/Scripts/Global.gd"
+TimerApp="*res://Resources/Scripts/TimerApp.gd"
+GameMenu="*res://Resources/Scripts/GameMenu.gd"
+Buttons="*res://Resources/Scripts/Buttons.gd"
 
 [display]
 
-window/size/fullscreen=true
-window/size/test_width=600
+window/size/resizable=false
+window/size/test_width=1024
 window/size/test_height=600
 
 [rendering]
