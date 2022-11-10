@@ -1,15 +1,18 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
-[ext_resource path="res://Resources/Scripts/ParallaxBackground.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Images/timer_bg_layer_01_floating_background.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Images/timer_bg_layer_02_floating_background.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Images/timer_bg_layer_03_floating_background.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Images/timer_bg_layer_04_floating_background.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Images/timer_floating_background_smaller.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Images/gear1.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Scripts/TextureButtons.gd" type="Script" id=8]
-[ext_resource path="res://Resources/Scripts/Buttons.gd" type="Script" id=9]
-[ext_resource path="res://Resources/audio/alarm-bell.wav" type="AudioStream" id=10]
+[ext_resource path="res://Resources/Scripts/VertParallaxBackground.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Images/timer_bg_layer_01a_floating_background.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Scripts/ParallaxBackgroundLayer2.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Images/timer_bg_layer_02_floating_background.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Scripts/ParallaxBackgroundLayer3.gd" type="Script" id=5]
+[ext_resource path="res://Resources/Images/timer_bg_layer_03_floating_background.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Scripts/ParallaxBackgroundLayer4.gd" type="Script" id=7]
+[ext_resource path="res://Resources/Images/timer_bg_layer_04_floating_background.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Images/timer_floating_background_smaller.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Images/gear1.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Scripts/TextureButtons.gd" type="Script" id=11]
+[ext_resource path="res://Resources/Scripts/Buttons.gd" type="Script" id=12]
+[ext_resource path="res://Resources/audio/alarm-bell.wav" type="AudioStream" id=13]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Resources/Fonts/volkhorn/VollkornBlack-gx2EE.otf"
@@ -89,43 +92,57 @@ font_data = SubResource( 19 )
 
 [node name="TimerNode" type="Node2D"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground1" type="ParallaxBackground" parent="."]
 script = ExtResource( 1 )
 
-[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground1"]
 motion_offset = Vector2( 25, 0 )
-motion_mirroring = Vector2( 2880, 0 )
+motion_mirroring = Vector2( 1, 0 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
+[node name="Sprite" type="Sprite" parent="ParallaxBackground1/ParallaxLayer1"]
+position = Vector2( 0, -8400 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+script = ExtResource( 3 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
 motion_offset = Vector2( 50, 0 )
 motion_mirroring = Vector2( 2880, 0 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource( 3 )
-centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_offset = Vector2( 150, 0 )
-motion_mirroring = Vector2( 2880, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2( 1.948, 0 )
+[node name="Sprite" type="Sprite" parent="ParallaxBackground2/ParallaxLayer2"]
 texture = ExtResource( 4 )
 centered = false
 
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxBackground3" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+script = ExtResource( 5 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground3"]
+motion_offset = Vector2( 150, 0 )
+motion_mirroring = Vector2( 2880, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground3/ParallaxLayer3"]
+position = Vector2( 1.948, 0 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="ParallaxBackground4" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+script = ExtResource( 7 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground4"]
 motion_offset = Vector2( 100, 0 )
 motion_mirroring = Vector2( 2880, 0 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource( 5 )
+[node name="Sprite" type="Sprite" parent="ParallaxBackground4/ParallaxLayer4"]
+texture = ExtResource( 8 )
 centered = false
 
 [node name="Viewport_Container" type="ViewportContainer" parent="."]
+editor/display_folded = true
 visible = false
 margin_right = 1024.0
 margin_bottom = 1024.0
@@ -139,23 +156,25 @@ handle_input_locally = false
 render_target_update_mode = 0
 
 [node name="MeshInstance" type="MeshInstance" parent="Viewport_Container/Viewport_Main"]
+visible = false
 
 [node name="Camera" type="Camera" parent="Viewport_Container/Viewport_Main"]
+visible = false
 current = true
 
 [node name="Timer_Control" type="Control" parent="."]
-editor/display_folded = true
+visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 1024, 600 )
 
 [node name="TimerFrame_Image" type="TextureRect" parent="Timer_Control"]
-margin_left = 50.0
-margin_top = 50.0
-margin_right = 501.0
-margin_bottom = 210.0
+margin_left = 300.0
+margin_top = 200.0
+margin_right = 751.0
+margin_bottom = 360.0
 rect_min_size = Vector2( 451, 160 )
-texture = ExtResource( 6 )
+texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -227,12 +246,10 @@ margin_top = 108.0
 margin_right = 448.0
 margin_bottom = 158.0
 rect_min_size = Vector2( 50, 50 )
-texture_normal = ExtResource( 7 )
-script = ExtResource( 8 )
+texture_normal = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="GameMenu_Control" type="Control" parent="."]
-editor/display_folded = true
-visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 1024, 600 )
@@ -248,7 +265,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameMenu_Control/HBoxContainer"]
 margin_right = 300.0
-margin_bottom = 444.0
+margin_bottom = 452.0
 rect_min_size = Vector2( 300, 420 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameMenu_Control/HBoxContainer/VBoxContainer"]
@@ -256,6 +273,7 @@ margin_right = 300.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 300, 100 )
 custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0.156863, 0.00784314, 0.282353, 1 )
 visible_characters = 10
 meta_underlined = false
 tab_size = 10
@@ -265,75 +283,77 @@ scroll_active = false
 [node name="Minutes_5_Button" type="Button" parent="GameMenu_Control/HBoxContainer/VBoxContainer"]
 margin_top = 104.0
 margin_right = 300.0
-margin_bottom = 143.0
+margin_bottom = 144.0
 rect_min_size = Vector2( 300, 25 )
 custom_fonts/font = SubResource( 6 )
 action_mode = 0
 text = "5 Minutes"
-script = ExtResource( 9 )
+script = ExtResource( 12 )
 
 [node name="Minutes_10_Button" type="Button" parent="GameMenu_Control/HBoxContainer/VBoxContainer"]
-margin_top = 147.0
+margin_top = 148.0
 margin_right = 300.0
-margin_bottom = 186.0
+margin_bottom = 188.0
 rect_min_size = Vector2( 300, 20 )
 custom_fonts/font = SubResource( 8 )
 text = "10 Minutes"
-script = ExtResource( 9 )
+script = ExtResource( 12 )
 
 [node name="Minutes_15_Button" type="Button" parent="GameMenu_Control/HBoxContainer/VBoxContainer"]
-margin_top = 190.0
+margin_top = 192.0
 margin_right = 300.0
-margin_bottom = 229.0
+margin_bottom = 232.0
 custom_fonts/font = SubResource( 10 )
 text = "15 Minutes"
-script = ExtResource( 9 )
+script = ExtResource( 12 )
 
 [node name="Minutes_20_Button" type="Button" parent="GameMenu_Control/HBoxContainer/VBoxContainer"]
-margin_top = 233.0
+margin_top = 236.0
 margin_right = 300.0
-margin_bottom = 272.0
+margin_bottom = 276.0
 custom_fonts/font = SubResource( 12 )
 text = "20 Minutes"
-script = ExtResource( 9 )
+script = ExtResource( 12 )
 
 [node name="Minutes_30_Button" type="Button" parent="GameMenu_Control/HBoxContainer/VBoxContainer"]
-margin_top = 276.0
+margin_top = 280.0
 margin_right = 300.0
-margin_bottom = 315.0
+margin_bottom = 320.0
 custom_fonts/font = SubResource( 14 )
 text = "30 Minutes"
-script = ExtResource( 9 )
+script = ExtResource( 12 )
 
 [node name="Minutes_45_Button" type="Button" parent="GameMenu_Control/HBoxContainer/VBoxContainer"]
-margin_top = 319.0
+margin_top = 324.0
 margin_right = 300.0
-margin_bottom = 358.0
+margin_bottom = 364.0
 custom_fonts/font = SubResource( 16 )
 text = "45 Minutes"
-script = ExtResource( 9 )
+script = ExtResource( 12 )
 
 [node name="Minutes_60_Button" type="Button" parent="GameMenu_Control/HBoxContainer/VBoxContainer"]
-margin_top = 362.0
+margin_top = 368.0
 margin_right = 300.0
-margin_bottom = 401.0
+margin_bottom = 408.0
 custom_fonts/font = SubResource( 18 )
 text = "60 Minutes"
-script = ExtResource( 9 )
+script = ExtResource( 12 )
 
 [node name="Quit_Button" type="Button" parent="GameMenu_Control/HBoxContainer/VBoxContainer"]
-margin_top = 405.0
+margin_top = 412.0
 margin_right = 300.0
-margin_bottom = 444.0
+margin_bottom = 452.0
 rect_min_size = Vector2( 300, 25 )
 custom_fonts/font = SubResource( 20 )
 text = "Quit"
-script = ExtResource( 9 )
+script = ExtResource( 12 )
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 10 )
+visible = false
+stream = ExtResource( 13 )
+volume_db = -1.0
 [connection signal="pressed" from="Timer_Control/TimerFrame_Image/SettingsButton" to="Timer_Control/TimerFrame_Image/SettingsButton" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="GameMenu_Control/HBoxContainer/VBoxContainer/Minutes_5_Button" to="GameMenu_Control/HBoxContainer/VBoxContainer/Minutes_5_Button" method="_on_Minutes_5_Button_pressed"]
 [connection signal="pressed" from="GameMenu_Control/HBoxContainer/VBoxContainer/Minutes_10_Button" to="GameMenu_Control/HBoxContainer/VBoxContainer/Minutes_10_Button" method="_on_Minutes_10_Button_pressed"]

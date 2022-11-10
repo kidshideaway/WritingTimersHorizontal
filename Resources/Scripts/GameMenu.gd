@@ -5,6 +5,7 @@ func _ready():
  
 func make_visible(): 
 	self.show();  
+	Global.minutes = 15;
 	Global.GetGameMenuControl.show();	
 	var check = self.check_visiblity(); 	
 	if Global.debug > 0:
